@@ -91,16 +91,20 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     lon1 = float(lon1)
     lat2 = float(lat2)
     lon2 = float(lon2)
-    # put corners in order, lowest first (s->n, w->e)
+    # put corners in order, lowest first
+    # (s->n)
     if lat1 < lat2:
         lat_start = lat1
-        lon_start = lon1
         lat_stop = lat2
-        lon_stop = lon2
     else:
         lat_start = lat2
-        lon_start = lon2
         lat_stop = lat1
+    # (w->e)
+    if lon1 < lon2:
+        lon_start = lon1
+        lon_stop = lon2
+    else:
+        lon_start = lon2
         lon_stop = lon1
     print(f'{lat_start}, {lon_start} -> {lat_stop}, {lon_stop}')
 
